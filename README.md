@@ -8,45 +8,20 @@ Multi-lingual translation library.
 
 ```javascript
 const translations = {
-  "Hello {person}, did you finish the {project} project?": {
+  "Hello {person}, have you finish the {project} project?": {
     "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
     "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
   }
 };
 
-const french = Translation.create({
-  language: "fr-CA",
+const translate = Translation.create({
+  language: navigator.language,
   translations
 });
 
-const spanish = Translation.create({
-  language: "es",
-  translations
-});
-
-const german = Translation.create({
-  language: "de",
-  translations
-});
-
-const user = {
-  name: "Amin",
-  project: "Translation"
-};
-
-console.log(french`Hello ${user.name}, did you finish the ${user.project} project?`);
-console.log(spanish`Hello ${user.name}, did you finish the ${user.project} project?`);
-console.log(german`Hello ${user.name}, did you finish the ${user.project} project?`);
-console.log(french`I think it is actually... Any thoughts?`);
-console.log(spanish`Anyone there...?`);
-console.log(german`Well, no news is good news I guess...`);
-
-// Salut Amin, est-ce que tu as fini le projet Translation ?
-// Hola Amin, ¿has terminado el proyecto Translation?
-// Hello Amin, did you finish the Translation project?
-// I think it is actually... Any thoughts?
-// Anyone there...?
-// Well, no news is good news I guess...
+const person = "John DOE";
+const project = "TOPSECRET";
+const translation = translate`Hello ${person}, have you finish the ${project} project?`;
 ```
 
 ### Browser
@@ -62,8 +37,6 @@ console.log(german`Well, no news is good news I guess...`);
 </html>
 ```
 
-[Try it online!](https://replit.com/join/wmbfaqir-amin_nairi).
-
 #### Classic
 
 ```html
@@ -77,8 +50,6 @@ console.log(german`Well, no news is good news I guess...`);
   </script>
 </html>
 ```
-
-[Try it online!](https://replit.com/join/hfxogpes-amin_nairi)
 
 ### Node.js
 
@@ -98,7 +69,162 @@ import {Translation} from "@aminnairi/translation";
 const {Translation} = require("@aminnairi/translation");
 ```
 
-[Try it online!](https://replit.com/join/qvvwnltg-amin_nairi)
+### Frameworks
+
+#### Alpine.js
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div x-data="data()">
+      <p x-text="translate`Hello ${person}, have you finish the ${project} project?`"></p>
+    </div>
+    <script src="./node_modules/alpinejs/dist/alpine.js"></script>
+    <script src="./node_modules/@aminnairi/translation/release/browser.js"></script>
+    <script>
+      "use strict";
+
+      const {Translation} = window["@aminnairi/translation"];
+
+      const translations = {
+        "Hello {person}, have you finish the {project} project?": {
+          "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+          "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+        }
+      };
+
+      const translate = Translation.create({
+        language: navigator.language || "",
+        translations
+      });
+
+      const data = () => ({
+        translate,
+        person: "John DOE",
+        project: "TOPSECRET"
+      });
+    </script>
+  </body>
+</html>
+```
+
+#### React
+
+```javascript
+import React, {useState} from "react";
+import {render} from "react-dom";
+import {Translation} from "@aminnairi/translation";
+
+const translate = Translation.create({
+  language: navigator.language || "",
+  translations: {
+    "Hello {person}, have you finished the {project} project?": {
+      "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
+    }
+  }
+});
+
+const App = () => {
+  const [person] = useState("John DOE");
+  const [project] = useState("TOPSECRET");
+
+  return <p>{translate`Hello ${person}, have you finished the ${project} project?`}</p>
+};
+
+render(<App />, document.getElementById("app"));
+```
+
+#### Preact
+
+```javascript
+import {h, render} from "preact";
+import {useState} from "preact/hooks";
+import {Translation} from "@aminnairi/translation/release/module.js";
+
+const translate = Translation.create({
+  language: navigator.language || "",
+  translations: {
+    "Hello {person}, have you finished the {project} project?": {
+      "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
+    }
+  }
+});
+
+const App = () => {
+  const [person] = useState("John DOE");
+  const [project] = useState("TOPSECRET");
+
+  return <p>{translate`Hello ${person}, have you finished the ${project} project?`}</p>
+};
+
+render(<App />, document.getElementById("root"));
+```
+
+#### Hyperapp
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import {Translation} from "https://unpkg.com/@aminnairi/translation?module";
+      import { h, text, app } from "https://unpkg.com/hyperapp";
+
+      const language = navigator.language || "";
+
+      const translations = {
+        "Hello {person}, have you finish the {project} project?": {
+          "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+          "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+        }
+      };
+
+      const translate = Translation.create({language, translations});
+
+      const init = {
+        person: "John DOE",
+        project: "TOPSECRET"
+      };
+
+      const view = ({person, project}) => {
+        return h("p", {}, text(translate`Hello ${person}, have you finish the ${project} project?`));
+      };
+
+      const node = document.getElementById("app");
+
+      app({init, view, node});
+    </script>
+  </body>
+</html>
+```
+
+#### Svelte
+
+```html
+<script>
+  import { Translation } from "@aminnairi/translation";
+
+  const person = "John DOE";
+
+  const project = "TOPSECRET";
+
+  const translate = Translation.create({
+    language: navigator.language || "",
+    translations: {
+      "Hello {person}, have you finish the {project} project?": {
+        "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+        "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+      }
+    }
+  });
+</script>
+
+<main>
+  <p>{translate`Hello ${person}, have you finish the ${project} project?`}</p>
+</main>
+```
 
 ## Requirements
 
