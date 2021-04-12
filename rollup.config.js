@@ -1,5 +1,4 @@
 import {terser} from "rollup-plugin-terser";
-import babel from "@rollup/plugin-babel";
 import path from "path";
 import packageJson from "./package.json";
 import remove from "rollup-plugin-delete";
@@ -7,19 +6,13 @@ import remove from "rollup-plugin-delete";
 export default {
   input: path.resolve("sources", "main.mjs"),
   plugins: [
+    external(),
     remove({
       targets: [
         path.resolve("release", "**", "*")
       ]
     }),
-    terser(),
-    babel({
-      babelrc: false,
-      babelHelpers: "bundled",
-      presets: [
-        "@babel/preset-env"
-      ]
-    })
+    terser()
   ],
   output: [
     {
