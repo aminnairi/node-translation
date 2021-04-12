@@ -16,7 +16,7 @@ None.
 
 ### Minor changes
 
-None.
+- Added more framework examples ([#2](https://github.com/aminnairi/node-translation/pull/2))
 
 ### Patches
 
