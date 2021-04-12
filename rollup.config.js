@@ -6,7 +6,6 @@ import remove from "rollup-plugin-delete";
 export default {
   input: path.resolve("sources", "main.mjs"),
   plugins: [
-    external(),
     remove({
       targets: [
         path.resolve("release", "**", "*")
