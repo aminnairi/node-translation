@@ -7,16 +7,16 @@ Multi-lingual translation library.
 ### General
 
 ```javascript
-const translations = {
-  "Hello {person}, have you finish the {project} project?": {
-    "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
-    "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
-  }
-};
+"use strict";
 
 const translate = Translation.create({
   language: navigator.language,
-  translations
+  translations: {
+    "Hello {person}, have you finish the {project} project?": {
+      "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+      "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+    }
+  }
 });
 
 const person = "John DOE";
@@ -87,16 +87,14 @@ const {Translation} = require("@aminnairi/translation");
 
       const {Translation} = window["@aminnairi/translation"];
 
-      const translations = {
-        "Hello {person}, have you finish the {project} project?": {
-          "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
-          "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
-        }
-      };
-
       const translate = Translation.create({
         language: navigator.language || "",
-        translations
+        translations: {
+          "Hello {person}, have you finish the {project} project?": {
+            "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+            "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+          }
+        };
       });
 
       const data = () => ({
@@ -172,29 +170,21 @@ render(<App />, document.getElementById("root"));
       import {Translation} from "https://unpkg.com/@aminnairi/translation?module";
       import { h, text, app } from "https://unpkg.com/hyperapp";
 
-      const language = navigator.language || "";
-
-      const translations = {
-        "Hello {person}, have you finish the {project} project?": {
-          "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
-          "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+      const translate = Translation.create({
+        language: navigator.language || "",
+        translations: {
+          "Hello {person}, have you finish the {project} project?": {
+            "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+            "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+          }
         }
-      };
+      });
 
-      const translate = Translation.create({language, translations});
-
-      const init = {
-        person: "John DOE",
-        project: "TOPSECRET"
-      };
-
-      const view = ({person, project}) => {
-        return h("p", {}, text(translate`Hello ${person}, have you finish the ${project} project?`));
-      };
-
-      const node = document.getElementById("app");
-
-      app({init, view, node});
+      app({
+        init: {person: "John DOE", project: "TOPSECRET"},
+        view: ({person, project}) => h("p", {}, text(translate`Hello ${person}, have you finish the ${project} project?`)),
+        node: document.getElementById("app")
+      });
     </script>
   </body>
 </html>
@@ -207,7 +197,6 @@ render(<App />, document.getElementById("root"));
   import { Translation } from "@aminnairi/translation";
 
   const person = "John DOE";
-
   const project = "TOPSECRET";
 
   const translate = Translation.create({
