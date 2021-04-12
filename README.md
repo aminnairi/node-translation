@@ -57,10 +57,12 @@ console.log(german`Well, no news is good news I guess...`);
 <!DOCTYPE html>
 <html>
   <script type="module">
-    import {Translation} from "https://unpkg.com/@aminnairi/translation";
+    import {Translation} from "https://unpkg.com/@aminnairi/translation?module";
   </script>
 </html>
 ```
+
+[Try it online!](https://replit.com/join/wmbfaqir-amin_nairi).
 
 #### Classic
 
@@ -75,6 +77,8 @@ console.log(german`Well, no news is good news I guess...`);
   </script>
 </html>
 ```
+
+[Try it online!](https://replit.com/join/hfxogpes-amin_nairi)
 
 ### Node.js
 
