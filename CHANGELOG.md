@@ -2,9 +2,24 @@
 
 ## Versions
 
+- [`0.1.3`](#013)
 - [`0.1.2`](#012)
 - [`0.1.1`](#011)
 - [`0.1.0`](#010)
+
+## 0.1.3
+
+### Major changes
+
+None.
+
+### Minor changes
+
+None.
+
+### Patches
+
+- Fixed a mistake when the build was unchanged
 
 ## 0.1.2
 
