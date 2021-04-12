@@ -4,7 +4,7 @@ Multi-lingual translation library.
 
 ## Usage
 
-### Universal
+### General
 
 ```javascript
 const translations = {
