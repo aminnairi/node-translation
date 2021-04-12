@@ -24,13 +24,12 @@
   ],
   "license": "GPL-3.0-or-later",
   "main": "release/common.js",
-  "browser": "release/browser.js",
   "module": "release/module.js",
   "name": "@aminnairi/translation",
   "engines": {
     "node": ">=9.0.0"
   },
-  "version": "0.1.3",
+  "version": "0.2.0",
   "scripts": {
     "build": "rollup --config rollup.config.js"
   },
