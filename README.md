@@ -98,6 +98,8 @@ import {Translation} from "@aminnairi/translation";
 const {Translation} = require("@aminnairi/translation");
 ```
 
+[Try it online!](https://replit.com/join/qvvwnltg-amin_nairi)
+
 ## Requirements
 
 - Node
