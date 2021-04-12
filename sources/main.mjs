@@ -87,7 +87,7 @@ export const Translation = {
         return fallbackTranslation;
       }
 
-      return foundTranslationKey.match(/\{.+?\}/gu).reduce((previousTranslation, translationVariable, translationVariableIndex) => previousTranslation.replaceAll(translationVariable, variables[translationVariableIndex]), foundTranslation);
+      return foundTranslationKey.match(/\{.+?\}/gu).reduce((previousTranslation, translationVariable, translationVariableIndex) => previousTranslation.replace(new RegExp(translationVariable.replace("{", "\\{").replace("}", "\\}"), "gu"), variables[translationVariableIndex]), foundTranslation);
     };
   }
 };
