@@ -94,7 +94,7 @@ const {Translation} = require("@aminnairi/translation");
             "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
             "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
           }
-        };
+        }
       });
 
       const data = () => ({
@@ -110,22 +110,21 @@ const {Translation} = require("@aminnairi/translation");
 #### React
 
 ```javascript
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import {render} from "react-dom";
 import {Translation} from "@aminnairi/translation";
-
-const translate = Translation.create({
-  language: navigator.language || "",
-  translations: {
-    "Hello {person}, have you finisheded the {project} project?": {
-      "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
-    }
-  }
-});
 
 const App = () => {
   const [person] = useState("John DOE");
   const [project] = useState("TOPSECRET");
+  const translate = useCallback(Translation.create({
+    language: navigator.language || "",
+    translations: {
+      "Hello {person}, have you finisheded the {project} project?": {
+        "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
+      }
+    }
+  }), [Translation, navigator.language]);
 
   return <p>{translate`Hello ${person}, have you finisheded the ${project} project?`}</p>
 };
@@ -137,21 +136,20 @@ render(<App />, document.getElementById("app"));
 
 ```javascript
 import {h, render} from "preact";
-import {useState} from "preact/hooks";
+import {useState, useCallback} from "preact/hooks";
 import {Translation} from "@aminnairi/translation";
-
-const translate = Translation.create({
-  language: navigator.language || "",
-  translations: {
-    "Hello {person}, have you finisheded the {project} project?": {
-      "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
-    }
-  }
-});
 
 const App = () => {
   const [person] = useState("John DOE");
   const [project] = useState("TOPSECRET");
+  const translate = useCallback(Translation.create({
+    language: navigator.language || "",
+    translations: {
+      "Hello {person}, have you finisheded the {project} project?": {
+        "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
+      }
+    }
+  }), [Translation, navigator.language]);
 
   return <p>{translate`Hello ${person}, have you finisheded the ${project} project?`}</p>
 };
