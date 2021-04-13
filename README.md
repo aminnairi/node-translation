@@ -63,6 +63,12 @@ $ npm install @aminnairi/translation
 import {Translation} from "@aminnairi/translation";
 ```
 
+### Deno
+
+```javascript
+import {Translation} from "https://unpkg.com/@aminnairi/translation/module";
+```
+
 #### CommonJS
 
 ```javascript
