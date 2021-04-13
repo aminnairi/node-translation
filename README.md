@@ -227,7 +227,7 @@ render(<App />, document.getElementById("root"));
 
 ## Issues
 
-See [`issues`](./issues).
+See [`issues`](../../issues).
 
 ## Contributing
 
