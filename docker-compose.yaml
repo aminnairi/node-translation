@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  npm:
+    image: node:15.0.0-alpine
+    user: node
+    tty: true
+    stdin_open: true
+    entrypoint: npm
+    working_dir: /home/node
+    volumes:
+      - .:/home/node

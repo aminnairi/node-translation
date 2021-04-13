@@ -45,7 +45,7 @@ export const Translation = {
 
     return (strings, ...variables) => {
       if (!Array.isArray(strings) || strings.some(string => typeof string !== "string") || variables.some(value => typeof value !== "string")) {
-        throw new TypeError("Function has not been called as a tag function");
+        throw new Error("Function has not been called as a tag function");
       }
 
       const foundTranslationKey = Object.keys(translations).find(sentence => {
