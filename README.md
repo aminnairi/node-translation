@@ -2,6 +2,8 @@
 
 Multi-lingual translation library.
 
+[![Tests](https://github.com/aminnairi/node-translation/actions/workflows/tests.yaml/badge.svg?branch=latest)](https://github.com/aminnairi/node-translation/actions/workflows/tests.yaml)
+
 ## Usage
 
 ### General
