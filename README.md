@@ -12,7 +12,7 @@ Multi-lingual translation library.
 const translate = Translation.create({
   language: navigator.language,
   translations: {
-    "Hello {person}, have you finish the {project} project?": {
+    "Hello {person}, have you finished the {project} project?": {
       "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
       "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
     }
@@ -21,7 +21,7 @@ const translate = Translation.create({
 
 const person = "John DOE";
 const project = "TOPSECRET";
-const translation = translate`Hello ${person}, have you finish the ${project} project?`;
+const translation = translate`Hello ${person}, have you finished the ${project} project?`;
 ```
 
 ### Browser
@@ -32,7 +32,7 @@ const translation = translate`Hello ${person}, have you finish the ${project} pr
 <!DOCTYPE html>
 <html>
   <script type="module">
-    import {Translation} from "https://unpkg.com/@aminnairi/translation?module";
+    import {Translation} from "https://unpkg.com/@aminnairi/translation/module";
   </script>
 </html>
 ```
@@ -42,7 +42,7 @@ const translation = translate`Hello ${person}, have you finish the ${project} pr
 ```html
 <!DOCTYPE html>
 <html>
-  <script src="https://unpkg.com/@aminnairi/translation/release/browser.js"></script>
+  <script src="https://unpkg.com/@aminnairi/translation/browser"></script>
   <script type="module">
     "use strict";
 
@@ -78,10 +78,10 @@ const {Translation} = require("@aminnairi/translation");
 <html>
   <body>
     <div x-data="data()">
-      <p x-text="translate`Hello ${person}, have you finish the ${project} project?`"></p>
+      <p x-text="translate`Hello ${person}, have you finished the ${project} project?`"></p>
     </div>
     <script src="https://unpkg.com/alpinejs"></script>
-    <script src="https://unpkg.com/@aminnairi/translation/release/module.js"></script>
+    <script src="https://unpkg.com/@aminnairi/translation/browser"></script>
     <script>
       "use strict";
 
@@ -90,7 +90,7 @@ const {Translation} = require("@aminnairi/translation");
       const translate = Translation.create({
         language: navigator.language || "",
         translations: {
-          "Hello {person}, have you finish the {project} project?": {
+          "Hello {person}, have you finished the {project} project?": {
             "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
             "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
           }
@@ -117,7 +117,7 @@ import {Translation} from "@aminnairi/translation";
 const translate = Translation.create({
   language: navigator.language || "",
   translations: {
-    "Hello {person}, have you finished the {project} project?": {
+    "Hello {person}, have you finisheded the {project} project?": {
       "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
     }
   }
@@ -127,7 +127,7 @@ const App = () => {
   const [person] = useState("John DOE");
   const [project] = useState("TOPSECRET");
 
-  return <p>{translate`Hello ${person}, have you finished the ${project} project?`}</p>
+  return <p>{translate`Hello ${person}, have you finisheded the ${project} project?`}</p>
 };
 
 render(<App />, document.getElementById("app"));
@@ -143,7 +143,7 @@ import {Translation} from "@aminnairi/translation";
 const translate = Translation.create({
   language: navigator.language || "",
   translations: {
-    "Hello {person}, have you finished the {project} project?": {
+    "Hello {person}, have you finisheded the {project} project?": {
       "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
     }
   }
@@ -153,7 +153,7 @@ const App = () => {
   const [person] = useState("John DOE");
   const [project] = useState("TOPSECRET");
 
-  return <p>{translate`Hello ${person}, have you finished the ${project} project?`}</p>
+  return <p>{translate`Hello ${person}, have you finisheded the ${project} project?`}</p>
 };
 
 render(<App />, document.getElementById("root"));
@@ -167,13 +167,13 @@ render(<App />, document.getElementById("root"));
   <body>
     <div id="app"></div>
     <script type="module">
-      import {Translation} from "https://unpkg.com/@aminnairi/translation/release/module.js";
+      import {Translation} from "https://unpkg.com/@aminnairi/translation/module";
       import { h, text, app } from "https://unpkg.com/hyperapp";
 
       const translate = Translation.create({
         language: navigator.language || "",
         translations: {
-          "Hello {person}, have you finish the {project} project?": {
+          "Hello {person}, have you finished the {project} project?": {
             "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
             "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
           }
@@ -182,7 +182,7 @@ render(<App />, document.getElementById("root"));
 
       app({
         init: {person: "John DOE", project: "TOPSECRET"},
-        view: ({person, project}) => h("p", {}, text(translate`Hello ${person}, have you finish the ${project} project?`)),
+        view: ({person, project}) => h("p", {}, text(translate`Hello ${person}, have you finished the ${project} project?`)),
         node: document.getElementById("app")
       });
     </script>
@@ -202,7 +202,7 @@ render(<App />, document.getElementById("root"));
   const translate = Translation.create({
     language: navigator.language || "",
     translations: {
-      "Hello {person}, have you finish the {project} project?": {
+      "Hello {person}, have you finished the {project} project?": {
         "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
         "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
       }
@@ -211,7 +211,7 @@ render(<App />, document.getElementById("root"));
 </script>
 
 <main>
-  <p>{translate`Hello ${person}, have you finish the ${project} project?`}</p>
+  <p>{translate`Hello ${person}, have you finished the ${project} project?`}</p>
 </main>
 ```
 
