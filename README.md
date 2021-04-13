@@ -221,6 +221,41 @@ render(<App />, document.getElementById("root"));
 </main>
 ```
 
+#### Express.js
+
+```javascript
+import express from "express";
+import {Translation} from "@aminnairi/translation";
+
+const server = express();
+
+server.use((request, response, next) => {
+  request.translate = Translation.create({
+    language: request.acceptsLanguages()[0] || "",
+    translations: {
+      "Hello {person}, have you finished the {project} project?": {
+        "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
+        "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
+      }
+    }
+  });
+
+  next();
+});
+
+server.get("/", (request, response) => {
+  const person = "John DOE";
+  const project = "TOPSECRET";
+  const translation = request.translate`Hello ${person}, have you finished the ${project} project?`;
+
+  response.json({success: true, data: translation});
+});
+
+server.listen(8080, "0.0.0.0", () => {
+  console.log("server is listening");
+});
+```
+
 ## Requirements
 
 - Node
