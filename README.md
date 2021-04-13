@@ -168,7 +168,7 @@ render(<App />, document.getElementById("root"));
     <div id="app"></div>
     <script type="module">
       import {Translation} from "https://unpkg.com/@aminnairi/translation/module";
-      import { h, text, app } from "https://unpkg.com/hyperapp";
+      import {h, text, app} from "https://unpkg.com/hyperapp";
 
       const translate = Translation.create({
         language: navigator.language || "",
@@ -194,7 +194,7 @@ render(<App />, document.getElementById("root"));
 
 ```html
 <script>
-  import { Translation } from "@aminnairi/translation";
+  import {Translation} from "@aminnairi/translation";
 
   const person = "John DOE";
   const project = "TOPSECRET";
