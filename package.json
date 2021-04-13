@@ -8,7 +8,9 @@
   },
   "description": "Multi-lingual translation library.",
   "files": [
-    "release"
+    "./common.js",
+    "./module.js",
+    "./browser.js"
   ],
   "homepage": "https://github.com/aminnairi/node-translation",
   "keywords": [
@@ -20,11 +22,16 @@
     "localization",
     "lingual",
     "language",
-    "translate"
+    "translate",
+    "svelte",
+    "hyperapp",
+    "react",
+    "alpine",
+    "alpinejs"
   ],
   "license": "GPL-3.0-or-later",
-  "main": "release/common.js",
-  "module": "release/module.js",
+  "main": "./common.js",
+  "module": "./module.js",
   "name": "@aminnairi/translation",
   "engines": {
     "node": ">=9.0.0"
