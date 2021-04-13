@@ -15,15 +15,15 @@ export default {
   ],
   output: [
     {
-      file: path.resolve("release", "common.js"),
+      file: path.resolve("common.js"),
       format: "cjs"
     },
     {
-      file: path.resolve("release", "module.js"),
+      file: path.resolve("module.js"),
       format: "esm"
     },
     {
-      file: path.resolve("release", "browser.js"),
+      file: path.resolve("browser.js"),
       format: "iife",
       name: packageJson.name,
       extend: true
