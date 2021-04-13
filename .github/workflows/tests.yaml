@@ -1,0 +1,27 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - next
+      - latest
+
+  push:
+    branches:
+      - next
+      - latest
+
+jobs:
+  tests:
+    name: Check that the specification are met
+    runs-on: ubuntu-20.04 
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Installation
+        run: docker-compose run --rm --user root -T npm install
+
+      - name: Test
+        run: docker-compose run --rm --user root -T npm test
