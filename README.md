@@ -42,7 +42,7 @@ const translation = translate`Hello ${person}, have you finish the ${project} pr
 ```html
 <!DOCTYPE html>
 <html>
-  <script src="https://unpkg.com/@aminnairi/translation"></script>
+  <script src="https://unpkg.com/@aminnairi/translation/release/browser.js"></script>
   <script type="module">
     "use strict";
 
@@ -80,8 +80,8 @@ const {Translation} = require("@aminnairi/translation");
     <div x-data="data()">
       <p x-text="translate`Hello ${person}, have you finish the ${project} project?`"></p>
     </div>
-    <script src="./node_modules/alpinejs/dist/alpine.js"></script>
-    <script src="./node_modules/@aminnairi/translation/release/browser.js"></script>
+    <script src="https://unpkg.com/alpinejs"></script>
+    <script src="https://unpkg.com/@aminnairi/translation/release/module.js"></script>
     <script>
       "use strict";
 
@@ -138,7 +138,7 @@ render(<App />, document.getElementById("app"));
 ```javascript
 import {h, render} from "preact";
 import {useState} from "preact/hooks";
-import {Translation} from "@aminnairi/translation/release/module.js";
+import {Translation} from "@aminnairi/translation";
 
 const translate = Translation.create({
   language: navigator.language || "",
@@ -167,7 +167,7 @@ render(<App />, document.getElementById("root"));
   <body>
     <div id="app"></div>
     <script type="module">
-      import {Translation} from "https://unpkg.com/@aminnairi/translation?module";
+      import {Translation} from "https://unpkg.com/@aminnairi/translation/release/module.js";
       import { h, text, app } from "https://unpkg.com/hyperapp";
 
       const translate = Translation.create({
