@@ -10,6 +10,12 @@
 $ npm install
 ```
 
+## Test
+
+```console
+$ npm test
+```
+
 ## Build
 
 ```console
