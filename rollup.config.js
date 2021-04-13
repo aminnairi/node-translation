@@ -8,7 +8,9 @@ export default {
   plugins: [
     remove({
       targets: [
-        path.resolve("release", "**", "*")
+        path.resolve("common.js"),
+        path.resolve("module.js"),
+        path.resolve("browser.js")
       ]
     }),
     terser()

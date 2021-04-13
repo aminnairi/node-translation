@@ -8,9 +8,9 @@
   },
   "description": "Multi-lingual translation library.",
   "files": [
-    "./common.js",
-    "./module.js",
-    "./browser.js"
+    "common.js",
+    "module.js",
+    "browser.js"
   ],
   "homepage": "https://github.com/aminnairi/node-translation",
   "keywords": [
@@ -30,8 +30,8 @@
     "alpinejs"
   ],
   "license": "GPL-3.0-or-later",
-  "main": "./common.js",
-  "module": "./module.js",
+  "main": "common.js",
+  "module": "module.js",
   "name": "@aminnairi/translation",
   "engines": {
     "node": ">=9.0.0"
