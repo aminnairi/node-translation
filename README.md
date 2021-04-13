@@ -224,3 +224,19 @@ render(<App />, document.getElementById("root"));
 ## Requirements
 
 - Node
+
+## Issues
+
+See [`issues`](./issues).
+
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+## Changelog
+
+See [`CHANGELOG.md`](./CHANGELOG.md).
+
+## License
+
+See [`LICENSE`](./LICENSE).
