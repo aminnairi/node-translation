@@ -37,6 +37,18 @@
     "node": ">=9.0.0"
   },
   "version": "0.4.0",
+  "directories": {
+    "lib": "release",
+    "test": "tests"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "directory": ".",
+    "type": "git",
+    "url": "https://github.com/aminnairi/node-translation.git"
+  },
   "scripts": {
     "test": "mocha tests",
     "build": "rollup --config rollup.config.js"
