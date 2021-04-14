@@ -91,14 +91,6 @@ describe("main", () => {
     expect(translate`Hello`).to.deep.equal("Hello");
   });
 
-  it("should return the fallback translation if the translation language is not found", () => {
-    const language = "es-ES";
-    const translations = {"Hello": {"fr-FR": "Bonjour"}};
-    const translate = Translation.create({language, translations});
-
-    expect(translate`Hello`).to.deep.equal("Hello");
-  });
-
   it("should return the translation if the translation language is a subset of the target language", () => {
     const language = "fr";
     const translations = {"Hello": {"fr-FR": "Bonjour"}};
