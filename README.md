@@ -352,6 +352,10 @@ You just found a wonderful translation library for your back-end server app and 
 
 When was the last time you saw helpful error messages in the console? Even if you make mistakes, nice and gentle errors are thrown with emphasis on precision and usefulness. Plus, it makes you gain some precious time by not having to traceback all the stack frames to search for the reason why it does not work. Never fear the errors again! 
 
+### Semantic Versioning
+
+This library highly relies on a strict semantic versioning of its package. If you upgrade to a minor version, it will always be backward compatible change. If you upgrade to a patch version, it will always be about a bug fixed and if you upgrade to a major version, it will mean that it will probably break the current API. Reliability and trust are at the heart of this library and no amout of popularity will change that.
+
 ## Cons
 
 ### Vue
