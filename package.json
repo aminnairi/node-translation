@@ -28,7 +28,10 @@
     "hyperapp",
     "react",
     "alpine",
-    "alpinejs"
+    "alpinejs",
+    "express",
+    "expressjs",
+    "express.js"
   ],
   "license": "GPL-3.0-or-later",
   "main": "common.js",
