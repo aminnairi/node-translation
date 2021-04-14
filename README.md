@@ -132,7 +132,7 @@ const App = () => {
         "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
       }
     }
-  }), [Translation, navigator.language]);
+  }), [Translation.create, navigator.language]);
 
   return <p>{translate`Hello ${person}, have you finisheded the ${project} project?`}</p>
 };
@@ -157,7 +157,7 @@ const App = () => {
         "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?"
       }
     }
-  }), [Translation, navigator.language]);
+  }), [Translation.create, navigator.language]);
 
   return <p>{translate`Hello ${person}, have you finisheded the ${project} project?`}</p>
 };
