@@ -304,7 +304,7 @@ server.listen(8080, "0.0.0.0", () => {
 
 ## Requirements
 
-- Node
+- [Node](https://nodejs.org/)
 
 ## Pros
 

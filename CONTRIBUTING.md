@@ -2,9 +2,9 @@
 
 ## Requirements
 
-- Node
-- Docker (optional, recommended, required for Docker Compose)
-- Docker Compose (optional, recommended)
+- [Node](https://nodejs.org/)
+- [Docker](https://www.docker.com/) (optional, recommended, required for Docker Compose)
+- [Docker Compose](https://docs.docker.com/compose/) (optional, recommended)
 
 ## Dependencies
 
