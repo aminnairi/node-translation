@@ -115,6 +115,14 @@ describe("main", () => {
     expect(translate`Hello`).to.deep.equal("Bonjour");
   });
 
+  it("should return the translation if the translation language is in the iOS or Android (React Native) format", () => {
+    const language = "fr_FR";
+    const translations = {"Hello": {"fr": "Bonjour"}};
+    const translate = Translation.create({language, translations});
+
+    expect(translate`Hello`).to.deep.equal("Bonjour");
+  });
+
   it("should return the translation with variables correctly", () => {
     const language = "fr-FR";
     const translations = {"Hello {person}, have you finished the {project} project?": {"fr": "Bonjour {person}, as-tu fini le projet {project} ?"}};

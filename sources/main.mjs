@@ -58,9 +58,10 @@ export const Translation = {
         return fallbackTranslation;
       }
 
+      const [languageFamily, languageVariant] = language.toLowerCase().replace("_", "-").split("-").map(languagePart => languagePart.trim());
+
       const foundTranslationLanguage = Object.entries(translations[foundTranslationKey]).find(([translationLanguage]) => {
-        const [languageFamily, languageVariant] = language.toLowerCase().split("-").map(languagePart => languagePart.trim());
-        const [translationLanguageFamily, translationLanguageVariant] = translationLanguage.toLowerCase().split("-").map(languagePart => languagePart.trim());
+        const [translationLanguageFamily, translationLanguageVariant] = translationLanguage.toLowerCase().replace("_", "-").split("-").map(languagePart => languagePart.trim());
 
         if (typeof languageFamily !== "undefined" && typeof translationLanguageFamily !== "undefined") {
           if (typeof languageVariant !== "undefined" || typeof translationLanguageVariant !== "undefined") {
