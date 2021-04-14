@@ -1,4 +1,4 @@
-# node-translation
+# @aminnairi/translation
 
 Multi-lingual translation library.
 
@@ -183,10 +183,11 @@ export default function App() {
   const [person] = useState("John DOE");
   const [project] = useState("TOPSECRET");
   const translate = useCallback(Translation.create({
-    language: deviceLanguage.slice(0, 2),
+    language: deviceLanguage,
     translations: {
       "Hello {person}, did you finish the {project} project?": {
-        "en_GB": "Bonjour {person}, avez-vous terminé le project {project} ?"
+        "fr-FR": "Bonjour {person}, avez-vous terminé le project {project} ?",
+        "es-ES": "Hola {person}, ¿has terminado el proyecto {project}?"
       }
     }
   }), [Translation.create, deviceLanguage]);
@@ -309,27 +310,31 @@ server.listen(8080, "0.0.0.0", () => {
 
 ### Functional
 
-This library has been made with function programming in mind. The source-code is using a functional style to disminish the amount of side-effects it can create, reduce the chance to introduce bugs and enhance its reliability.
+This library has been made with functional programming in mind. The main goal is to disminish the amount of side-effects it can create, reduce the chance to introduce bugs and enhance its reliability.
 
 ### Scalable
 
-You can start small and have a simple translation function that holds all of your translations, or you can split your translations in separated files and import them just as you would import any other JavaScript module. Create small translations functions that follow your components architecture.
+You can start small and have a simple translation function that holds all of your translations, or you can split your translations in separated files and import them just as you would import any other JavaScript module. Or even create small translations functions that follow your components architecture. You handle this part of the work, you are in control of how you want your translations to be managed, the library will scale with you.
 
 ### Testable
 
-This library has been tested to reach the maximum coverage possible. So that you can focus on your translations and less on the tool itself. You are even encouraged to create small translation functions that you can then later test easily, no mocks to be made, no ugly hack to simulate the file system. Functions are the most easy peace of software you can test and this library aims at reducing this friction as well.
+This library has been tested to reach the maximum coverage possible. So that you can focus on your translations and less on the tool itself. You are even encouraged to create small translation functions that you can then later test easily, no mocks to be made, no ugly hack to simulate the file system. Functions are the most easy piece of software you can test and this library aims at reducing this friction as well so that you can have an app reliable in both its translations and its features.
 
 ### Lighweight
 
-This library is one of the smallest you can find in the package ecosystem of translation. Yet, this library can easily be used in many frameworks and libraries, or even just plain JavaScript and help you make your website internationalized quickly and efficiently.
+This library is one of the smallest you can find in the package ecosystem of translation. Yet, it can easily be used in many frameworks and libraries, or even just plain JavaScript and help you make your website internationalized quickly and efficiently.
 
 ### Reusable
 
-Some library have taken the direction of using keys as the main identifier for referencing translation throughout the sources. Keys don't scale well because you need to come out with each time a new key name that can identify the text correctly. Why not use the text itself? By doing that, you reduce the friction and the speed at which a text can be translated and focus on the translation itself. Plus, you can't make the mistake of writing the same key twice for the same text since you are using the text itself.
+Some library have taken the direction of using key identifiers for referencing translations throughout the sources. Keys don't scale well because you need to come out with a new name that is relevant each time. Why not use the text itself? By doing that, you reduce the friction and the speed at which a text can be translated and focus on the translation itself. Plus, you can't make the mistake of writing the same key twice for the same translation since you are using the text itself.
+
+### Flexible
+
+Whether the locale identifier comes from the operating system, a HTTP header or the user selection, this library will help you with your translation. It does not assume where to find the locale: you do. You are in total control with this library, yet it is powerful enough to help you translate your application in a single responsibility principle manner.
 
 ### Dynamic
 
-You could write three translation key for a single text if you have some time to spare. Or you could use this library and write only one key for one text to be translated since this library support static as well as dynamic translation. Meaning you can have nice little placeholders that will reference any text that can be changed. You can even reference a placeholder as many times as you want in the translation key as well as in the translation text. Just focus on the translation, not on the implementation.
+Using variables is part of making our applications dynamic and is at the heart of any interesting application out there. But what about dynamic texts and translations? Are you willing to spend some time making three translations for only one text because it has some dynamic content? That is too much work and focus on the implementation, and less on the translation itself. With this library, you only have one text, and one (or more) translation for the language you want to support. That's it. Less work for you, means more time for interesting features.
 
 ### Polymorphic
 
@@ -341,13 +346,29 @@ If you are supporting a multi-lingual website with many variants, you'll find yo
 
 ### Isomorphic
 
-You just found a wonderful translation library for your back-end server app and want to use it on another front-end application. Same tool, different environment let's you focus more on the translation and less on the implementation details Since it does not rely on any Node.js specific API, only JavaScript standards. You want to store your translations on a file? You can! Just read them and feed them to the `Translation.create` builder. That's it. You want to fetch your translations from the internet on a front-end application? Why not! Just feed them again and you are good to go.
+You just found a wonderful translation library for your back-end server app and want to use it on another front-end application. Same tool, different environment let's you focus more on the translation and less on the implementation details Since it does not rely on any Node.js specific API, only JavaScript standards. You want to store your translations on a file? You can! Just read them and feed them to the `Translation.create` builder. That's it. You want to fetch your translations from the internet on a front-end application? Why not! Just feed them again and you are good to go. You can even use this library with React Native with absolutely no friction!
+
+### Helpful
+
+When was the last time you saw helpful error messages in the console? Even if you make mistakes, nice and gentle errors are thrown with emphasis on precision and usefulness. Plus, it makes you gain some precious time by not having to traceback all the stack frames to search for the reason why it does not work. Never fear the errors again! 
 
 ## Cons
 
 ### Vue
 
 This library does not integrate well with Vue.js. Although I was a long-time Vue afficionado, it does not get well with template tag function, which is the heart of this library. The main reason is that you simply cannot evaluate template tag function in a Vue interpollation (double curly braces). There are way better libraries that make the work of translating a Vue app and I'm 100% sure you'll find something that will suit your needs.
+
+### Performance
+
+Although performance has not been the main goal of this library, it should be pretty fast out of the box. Try not to store all of your translations in one object but rather have your translations splitted by pages or domains so that it will be less payload to get from the client-side. Less payload also means less to search for the translation function!
+
+### Text as key
+
+Having the text as a key has the benefit of introducing less keys, and is a more human way of seeing the translations. But this comes at the cost of making the translation sensible. If you mistakenly add a character, the translation will not match the one you wanted and will fallback to the text itself non-translated. This can be seen as both a pro or a con. You are sacrificing that in the benefit of having a much easier time to integrate dynamic translations. Be wise and do test your views whether it is manually or automatically!
+
+### TypeScript
+
+This library has no intent on being ever written in TypeScript, although you are free to come up with typings for this library if you want. Using text as keys means that TypeScript won't be of any help in helping you autocomplete or type check your texts. Plus, runtime type checking is already done for errors that come up in both development or production environments.
 
 ## Issues
 
