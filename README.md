@@ -2,7 +2,7 @@
 
 Multi-lingual translation library.
 
-[![Tests](https://github.com/aminnairi/node-translation/actions/workflows/tests.yaml/badge.svg?branch=latest)](https://github.com/aminnairi/node-translation/actions/workflows/tests.yaml) [![NPM Badge](https://badgen.net/npm/v/@aminnairi/translation/)](https://www.npmjs.com/package/@aminnairi/translation) [![Bundle size](https://badgen.net/bundlephobia/minzip/@aminnairi/translation)](https://bundlephobia.com/result?p=@aminnairi/translation) [![Tree shaking support](https://badgen.net/bundlephobia/tree-shaking/@aminnairi/translation)](https://bundlephobia.com/result?p=@aminnairi/translation)
+[![Tests](https://github.com/aminnairi/node-translation/actions/workflows/tests.yaml/badge.svg?branch=latest)](https://github.com/aminnairi/node-translation/actions/workflows/tests.yaml) [![Code Style](https://github.com/aminnairi/node-translation/actions/workflows/codestyle.yaml/badge.svg?branch=latest)](https://github.com/aminnairi/node-translation/actions/workflows/codestyle.yaml) [![NPM Badge](https://badgen.net/npm/v/@aminnairi/translation/)](https://www.npmjs.com/package/@aminnairi/translation) [![Bundle size](https://badgen.net/bundlephobia/minzip/@aminnairi/translation)](https://bundlephobia.com/result?p=@aminnairi/translation) [![Tree shaking support](https://badgen.net/bundlephobia/tree-shaking/@aminnairi/translation)](https://bundlephobia.com/result?p=@aminnairi/translation)
 
 ## Usage
 
