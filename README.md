@@ -173,11 +173,11 @@ render(<App />, document.getElementById("root"));
   <body>
     <div id="app"></div>
     <script type="module">
+      import {h, app, text} from "https://unpkg.com/hyperapp";
       import {Translation} from "https://unpkg.com/@aminnairi/translation/module";
-      import {h, text, app} from "https://unpkg.com/hyperapp";
 
       const translate = Translation.create({
-        language: navigator.language || "",
+        language: navigator.language,
         translations: {
           "Hello {person}, have you finished the {project} project?": {
             "fr-FR": "Salut {person}, est-ce que tu as fini le projet {project} ?",
@@ -187,10 +187,12 @@ render(<App />, document.getElementById("root"));
       });
 
       app({
-        init: {person: "John DOE", project: "TOPSECRET"},
-        view: ({person, project}) => h("p", {}, text(translate`Hello ${person}, have you finished the ${project} project?`)),
-        node: document.getElementById("app")
-      });
+        init: {person: "John DOE", project: "TOPSECRET", translate},
+        node: document.getElementById("app"),
+        view: ({person, project, translate}) => h("main", {}, [
+          h("p", {}, text(translate`Hello ${person}, have you finished the ${project} project?`))
+        ])
+      }); 
     </script>
   </body>
 </html>
