@@ -124,4 +124,28 @@ describe("main", () => {
 
     expect(translate`Hello ${person}, have you finished the ${project} project?`).to.deep.equal("Bonjour John DOE, as-tu fini le projet TOPSECRET ?");
   });
+
+  it("should return the text for a bunch of random string when the language matches", () => {
+    const createRandomStringOfLength = length => Array.from(Array(length)).map(() => String.fromCharCode(Math.floor(Math.random() * 100 + 21))).join("");
+    const randomStrings = Array.from(Array(10)).map(() => createRandomStringOfLength(15));
+    const language = "en";
+
+    randomStrings.forEach(randomString => {
+      const translations = {"Random string": {"en": randomString}};
+      const translate = Translation.create({language, translations});
+      expect(translate`Random string`).to.deep.equal(randomString);
+    });
+  });
+
+  it("should never return the text for a bunch of random string when the language does not match", () => {
+    const createRandomStringOfLength = length => Array.from(Array(length)).map(() => String.fromCharCode(Math.floor(Math.random() * 100 + 21))).join("");
+    const randomStrings = Array.from(Array(10)).map(() => createRandomStringOfLength(15));
+    const language = "en";
+
+    randomStrings.forEach(randomString => {
+      const translations = {"Random string": {"fr": randomString}};
+      const translate = Translation.create({language, translations});
+      expect(translate`Random string`).to.deep.equal("Random string");
+    });
+  });
 });
