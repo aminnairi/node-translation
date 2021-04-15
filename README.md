@@ -302,6 +302,72 @@ server.listen(8080, "0.0.0.0", () => {
 });
 ```
 
+## API
+
+```javascript
+/**
+ * @description Create a translation function to help you with your internationalization
+ * @returns {Function} A tag function that when called translate the text
+ * @example
+ * const translate = Translation.create({language, translations});
+ */
+const translate = Translation.create({
+  /**
+   * This is the language that is grabbed from the user, an OS setting, the browser, etc...
+   * @type {string} The language with variant (or not) that will be used to translate any text
+   * @example
+   * Translation.create({language = "fr-FR", translations});
+   * Translation.create({language = "fr", translations});
+   * Translation.create({language = "fr_FR", translations});
+   * Translation.create({language: navigator.language || "en-US", translations});
+   */
+  language: "fr-FR",
+  /**
+   * @description These are the translations texts that will also be used on your app
+   * @type {object} An objet of all the texts to translate with their translations
+   */
+  translations: {
+    // If the language does not match either one of these languages, it will return this text
+    "Hello": {
+      // If the language is either "fr-FR", "fr-fr", "fr_FR", "fr_fr" or "fr" it will match
+      "fr-FR": "Bonjour",
+      // If the language is either "es-ES", "es-es", "es_ES", "es_es" or "es" it will match
+      "es-ES": "Hola"
+    },
+    // Text can have placeholder too, 
+    "Hi {person}!": {
+      // The translated text can reference these placeholders
+      "fr-FR": "Salut {person} !",
+      // See down bellow for examples
+      "es-ES": "¡Hola {person}!"
+    },
+    // You can even repeat a placeholder multiple times
+    "Do you love {bookName}? I love {bookName}, and {anotherBookName} also!": {
+      // Translations can put the placeholder in any order, anywhere in the text
+      "fr-FR": "Tu aimes {bookName} ? J'aime {bookName} et {anotherBookName} aussi !",
+      // So that you can adapt the translation to the language idioms
+      "es-ES": "¿Te gusta {bookName}? Me encantan {bookName} y {anotherBookName} también."
+    }
+  }
+});
+
+const person = "Jake";
+const bookName = "Enemy of Terror";
+const anotherBookName = "The Storm Oath";
+
+translate`Hello`;
+// "Bonjour"
+
+translate`Hi ${person}!`;
+// "Salut Jake !"
+
+translate`Hello ${person}!`;
+// "Hello Jake!" (untranslated because no match found)
+
+translate`Do you love ${bookName}? I love ${bookName}, and ${anotherBookName} also!`;
+// "Tu aimes Enemy of Terror ? J'aime Enemy of Terror et The Storm Oath aussi !"
+```
+
 ## Requirements
 
 - [Node](https://nodejs.org/)
