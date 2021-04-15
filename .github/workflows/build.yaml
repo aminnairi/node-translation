@@ -30,4 +30,4 @@ jobs:
         run: 'docker-compose run --rm --user root -T npm pack --dry-run > package-output.txt'
 
       - name: Package Files
-        run: 'grep "common.js" package-output.txt && grep "module.js" package-output.txt && grep "common.js" package-output.txt'
+        run: 'grep "common.js" package-output.txt && grep "module.js" package-output.txt && grep "browser.js" package-output.txt'
