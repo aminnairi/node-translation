@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.0.0`](#100)
 - [`0.4.0`](#040)
 - [`0.3.0`](#030)
 - [`0.2.1`](#021)
@@ -10,6 +11,21 @@
 - [`0.1.2`](#012)
 - [`0.1.1`](#011)
 - [`0.1.0`](#010)
+
+## 1.0.0
+
+### Major changes
+
+None.
+
+### Minor changes
+
+- Added a whole section on the pros and cons of using this library in the README
+- Added more examples and fixed some corrupted ones in the README
+
+### Patches
+
+None.
 
 ## 0.4.0
 
