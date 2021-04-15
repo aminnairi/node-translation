@@ -25,9 +25,3 @@ jobs:
 
       - name: Build
         run: docker-compose run --rm --user root -T npm run build
-
-      - name: Package
-        run: 'docker-compose run --rm --user root -T npm pack --dry-run > package-output.txt'
-
-      - name: Package Files
-        run: 'grep "common.js" package-output.txt && grep "module.js" package-output.txt && grep "browser.js" package-output.txt'
