@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - next
+      - latest
+
+  push:
+    branches:
+      - next
+      - latest
+
+jobs:
+  tests:
+    name: Check that the package can be built correctly and has all the necessary files
+    runs-on: ubuntu-20.04 
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Installation
+        run: docker-compose run --rm --user root -T npm install
+
+      - name: Build
+        run: docker-compose run --rm --user root -T npm run build
+
+      - name: Package
+        run: 'docker-compose run --rm --user root -T npm pack --dry-run > package-output.txt'
+
+      - name: Package Files
+        run: 'grep "common.js" package-output.txt && grep "module.js" package-output.txt && grep "common.js" package-output.txt'
