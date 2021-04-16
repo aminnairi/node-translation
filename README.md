@@ -455,3 +455,7 @@ See [`CHANGELOG.md`](./CHANGELOG.md).
 ## License
 
 See [`LICENSE`](./LICENSE).
+
+## Security Policy
+
+See [`SECURITY.md`](./SECURITY.md).
